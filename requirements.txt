@@ -1,0 +1,9 @@
+torch==2.1.0
+torchvision==0.16.0
+faster-coco-eval==1.6.5
+PyYAML
+tensorboard
+timm
+scikit-learn
+scipy
+pycocotools

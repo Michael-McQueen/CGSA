@@ -1,0 +1,74 @@
+task: detection
+
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]
+
+num_classes: 8
+remap_mscoco_category: True
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: DomainAdaptationDataset
+    target_dataset:
+      type: CocoDetection
+      img_folder: /path/to/bdd100k/images/100k/train/
+      ann_file: /path/to/annotations/bdd100k_daytime_train_cocostyle.json
+      return_masks: False
+    transforms:
+      type: Compose
+      ops:
+        - {type: RandomPhotometricDistort, p: 0.5}
+        - {type: RandomZoomOut, fill: 0}
+        - {type: RandomIoUCrop, p: 0.8}
+        - {type: SanitizeBoundingBoxes, min_size: 1}
+        - {type: RandomHorizontalFlip}
+        - {type: Resize, size: [640, 640], }
+        - {type: SanitizeBoundingBoxes, min_size: 1}
+        - {type: ConvertPILImage, dtype: 'float32', scale: True}   
+        - {type: ConvertBoxes, fmt: 'cxcywh', normalize: True}
+      policy:
+        name: stop_epoch
+        epoch: 99
+        ops: ['RandomPhotometricDistort', 'RandomZoomOut', 'RandomIoUCrop']
+    strong_transforms:
+      type: Compose
+      ops:
+        - {type: RandomApply, transforms: [{type: ColorJitter, brightness: 0.4, contrast: 0.4, saturation: 0.4, hue: 0.1}], p: 0.8}
+        - {type: RandomGrayscale, p: 0.2}
+        - {type: RandomApply, transforms: [{type: GaussianBlur, kernel_size: 3, sigma: [0.1, 2.0]}], p: 0.5}
+        - {type: Resize, size: [640, 640]}
+        - {type: ConvertPILImage, dtype: 'float32', scale: True}
+    weak_transforms:
+      type: Compose
+      ops:
+        - {type: Resize, size: [640, 640]}
+        - {type: ConvertPILImage, dtype: 'float32', scale: True}
+  collate_fn:
+    type: DomainAdaptationCollateFunction
+    scales: [480, 512, 544, 576, 608, 640, 640, 640, 672, 704, 736, 768, 800]
+    stop_epoch: 36
+
+  shuffle: True
+  total_batch_size: 16
+  num_workers: 4
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: /path/to/bdd100k/images/100k/val/
+    ann_file: /path/to/annotations/bdd100k_daytime_val_cocostyle.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: 
+        - {type: Resize, size: [640, 640]}
+        - {type: ConvertPILImage, dtype: 'float32', scale: True}   
+  shuffle: False
+  num_workers: 4
+  drop_last: False
+  collate_fn:
+    type: BatchImageCollateFuncion
+  total_batch_size: 32
