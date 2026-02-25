@@ -82,7 +82,7 @@ If you find this work useful, please cite our paper:
 ```bibtex
 @inproceedings{
 dai2026cgsa,
-title={{CGSA}: Class-Guided Slot-Aware Adaptation for Source-Free Object Detections},
+title={{CGSA}: Class-Guided Slot-Aware Adaptation for Source-Free Object Detection},
 author={Boyang Dai and Zeng Fan and Zihao Qi and Meng Lou and Yizhou Yu},
 booktitle={The Fourteenth International Conference on Learning Representations},
 year={2026},
