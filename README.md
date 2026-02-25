@@ -2,7 +2,7 @@
 
 This repository provides the official implementation of the paper:
 
-> **CGSA: Class-Guided Slot-Aware Adaptation for Source-Free Object Detections**  (ICLR 2026)
+> **CGSA: Class-Guided Slot-Aware Adaptation for Source-Free Object Detection**  (ICLR 2026)
 
 **CGSA** addresses Source-Free Domain Adaptive Object Detection (SFOD) by introducing a **Class-Guided Slot-Aware** adaptation framework built on [RT-DETR](https://github.com/lyuwenyu/RT-DETR). Below is our pipeline.
 
@@ -79,4 +79,13 @@ This codebase is built upon [RT-DETR](https://github.com/lyuwenyu/RT-DETR). We t
 ## Citation
 
 If you find this work useful, please cite our paper:
-
+```bibtex
+@inproceedings{
+dai2026cgsa,
+title={{CGSA}: Class-Guided Slot-Aware Adaptation for Source-Free Object Detections},
+author={Boyang Dai and Zeng Fan and Zihao Qi and Meng Lou and Yizhou Yu},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=yiF4Jo38AP}
+}
+```
