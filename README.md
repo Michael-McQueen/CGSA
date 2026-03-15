@@ -88,4 +88,11 @@ booktitle={The Fourteenth International Conference on Learning Representations},
 year={2026},
 url={https://openreview.net/forum?id=yiF4Jo38AP}
 }
+
+@article{dai2026cgsa,
+  title={CGSA: Class-Guided Slot-Aware Adaptation for Source-Free Object Detection},
+  author={Dai, Boyang and Fan, Zeng and Qi, Zihao and Lou, Meng and Yu, Yizhou},
+  journal={arXiv preprint arXiv:2602.22621},
+  year={2026}
+}
 ```
