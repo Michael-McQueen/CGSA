@@ -81,11 +81,10 @@ This codebase is built upon [RT-DETR](https://github.com/lyuwenyu/RT-DETR). We t
 If you find this work useful, please cite our paper:
 ```bibtex
 @inproceedings{dai2026cgsa,
-  title={CGSA: Class-Guided Slot-Aware Adaptation for Source-Free Object Detection},
-  author={Dai, Boyang and Qi, Zihao and Lou, Meng and Yu, Yizhou and others},
-  booktitle={International Conference on Learning Representations},
-  volume={2026},
-  pages={86830--86856},
-  year={2026}
+title={{CGSA}: Class-Guided Slot-Aware Adaptation for Source-Free Object Detection},
+author={Boyang Dai and Zeng Fan and Zihao Qi and Meng Lou and Yizhou Yu},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=yiF4Jo38AP}
 }
 ```
